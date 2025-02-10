@@ -1,0 +1,5 @@
+mysql-connector-python
+flask
+flask-bcrypt
+python-jose
+python-dotenv
