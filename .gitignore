@@ -1,0 +1,16 @@
+# Ignorar diretórios e arquivos do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorar configurações de ambiente virtual
+venv/
+.env
+.env.local
+
+# Ignorar logs e arquivos temporários
+*.log
+*.sqlite3
+instance/
+tmp/
