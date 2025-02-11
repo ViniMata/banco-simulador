@@ -22,7 +22,7 @@ db = mysql.connector.connect(
     password = os.getenv("DB_PASSWORD"), 
     database = "banco_simulador"
 )
-def criar_token_acesso(user_id:id):
+def criar_token_acesso(user_id:int):
     expira_em = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     payload = {
         "sub": str(user_id),
@@ -134,13 +134,17 @@ def perfil():
     user_id = autenticar_usuario()
     if not user_id:
         return jsonify({"erro":"Não autenticado"}), 401
+    try:
+        cursor = db.cursor()
+        cursor.execute("SELECT username, criado_em FROM usuarios WHERE id = %s", (user_id,))
+        usuario = cursor.fetchone()
+        cursor.close()
 
-    cursor = db.cursor()
-    cursor.execute("SELECT username, criado_em FROM usuarios WHERE id = %s", (user_id,))
-    usuario = cursor.fetchone()
-    cursor.close()
-
-    return jsonify(usuario), 200
+        return jsonify(usuario), 200
+    except mysql.connector.Error as err:
+        return jsonify({"erro": f"Erro no banco de dados: {err}"}), 500
+    finally:
+        cursor.close()
 
 @app.route("/contas")
 def consultar_contas():
@@ -255,7 +259,7 @@ def atualizar_status(id):
     conta = cursor.fetchone()
 
     if not conta:
-        return jsonify({"erro": "Conta não encontrada ou acesso negado"}), 404
+        return jsonify({"erro": "Conta não encontrada."}), 404
 
     dados = request.get_json()
     novo_status = dados.get("status")
