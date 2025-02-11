@@ -1,8 +1,3 @@
-Segue um exemplo de `README.md` para o seu projeto:
-
----
-
-```markdown
 # Simulador Bancário API
 
 Este projeto é uma API desenvolvida em Python com Flask para simular operações bancárias. Ela possibilita o registro de usuários, autenticação via JWT, e diversas operações financeiras, como depósitos, saques, transferências e consulta de extratos. Também há endpoints administrativos para a gestão de contas.
