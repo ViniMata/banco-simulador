@@ -218,4 +218,3 @@ Contribuições são bem-vindas! Se você deseja contribuir para o projeto, sint
 ---
 
 *Desenvolvido com ❤️ para aprimorar e mostrar minhas habilidades.*
-```
