@@ -14,3 +14,6 @@ venv/
 *.sqlite3
 instance/
 tmp/
+ 
+# Ignorar os arquivos do vscode
+.vscode/settings.json
