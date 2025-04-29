@@ -162,7 +162,7 @@ def atualizar_status(id):
             return(jsonify({"erro":f"Conta com o id {id} não encontrada "})), 404
 
         dados = request.get_json()
-        novo_status = dados.get("status")
+        novo_status = dados.get("status").lower()
         
         if not novo_status:
             return jsonify({"erro": "Campo 'status' é obrigatório"}), 400
@@ -172,8 +172,8 @@ def atualizar_status(id):
         ContaService.mudar_status(novo_status, id)
 
         AuthService.commitar_na_db()
-        
-        return jsonify({"mensagem": "Status atualizado com sucesso!"}), 200
+
+        return jsonify({"mensagem": f"Status da conta {id} atualizado para '{novo_status}' com sucesso!"}), 200
     
     except Exception as err:
         return jsonify({"erro": f"Ocorreu um erro inesperado: {err}"}), 500
