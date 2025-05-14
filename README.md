@@ -71,10 +71,18 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 5. **Execute a API**
 
    ```sh
-   python app.py
+   python main.py
    ```
 
    A aplicação rodará no modo `debug` na porta padrão (`http://127.0.0.1:5000`).
+
+6. **Banco de dados**
+Certifique-se de que o banco `banco_simulador` exista. Para criá-lo rapidamente, você pode usar o seguinte comando:
+
+   ```bash
+   mysql -u root -p banco_simulador < schema.sql
+    
+   ```
 
 ## Endpoints Principais
 
@@ -82,7 +90,7 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 
 - **Registro de Usuário**
 
-  - **URL:** `/registrar`
+  - **URL:** `/auth/registrar`
   - **Método:** `POST`
   - **Payload Exemplo:**
     ```json
@@ -96,7 +104,7 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 
 - **Login**
 
-  - **URL:** `/login`
+  - **URL:** `/auth/login`
   - **Método:** `POST`
   - **Payload Exemplo:**
     ```json
@@ -111,7 +119,7 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 
 - **Consulta de Perfil**
 
-  - **URL:** `/perfil`
+  - **URL:** `/auth/perfil`
   - **Método:** `GET`
   - **Cabeçalho:** `Authorization: Bearer <seu_token>`
   - **Descrição:** Retorna os dados do usuário autenticado.
@@ -166,7 +174,7 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 
 - **Listagem de Contas**
 
-  - **URL:** `/contas`
+  - **URL:** `/admin/contas`
   - **Método:** `GET`
   - **Descrição:** Retorna todas as contas cadastradas.
 
@@ -213,6 +221,14 @@ Este projeto é uma API desenvolvida em Python com Flask para simular operaçõe
 ## Contribuições
 
 Contribuições são bem-vindas! Se você deseja contribuir para o projeto, sinta-se à vontade para abrir uma _issue_ ou enviar um _pull request_.
+
+## 📌 Autor
+
+Desenvolvido por **Vinícius Pereira Matareli**  
+Estudante de Engenharia de Software - FIAP  
+Ano: 2025
+
+> Projeto acadêmico com fins de prática e demonstração técnica.
 
 
 ---
